@@ -5,10 +5,8 @@ import seaborn as sns
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 
-# Caminho do arquivo CSV
-caminho = r"D:\Curso\ecommerce_estatistica.csv"
 
-df = pd.read_csv(caminho)
+df = pd.read_csv('ecommerce_estatistica.csv')
 
 # Análise inicial
 print("Quantidade de linhas e colunas:")
@@ -45,7 +43,15 @@ plt.show()
 colunas = ['Preço','Nota','N_Avaliações','Desconto','Qtd_Vendidos_Cod']
 correlacao = df[colunas].corr()
 plt.figure(figsize=(10,7))
-sns.heatmap(correlacao, annot=True, cmap="coolwarm", fmt='.2f', vmin=1, vmax=1)
+sns.heatmap(
+    correlacao,
+    annot=True,
+    cmap='coolwarm',
+    fmt='.2f',
+    vmin=-1,
+    vmax=1,
+    center=0
+)
 plt.title('Correlação entre Indicadores dos Produtos')
 plt.tight_layout()
 plt.show()
